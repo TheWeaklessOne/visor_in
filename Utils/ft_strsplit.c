@@ -1,4 +1,16 @@
-#include "../Includes/Utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/19 17:26:13 by wstygg            #+#    #+#             */
+/*   Updated: 2020/01/19 17:26:14 by wstygg           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../Includes/util.h"
 
 static	size_t	ft_count_words(char const *s, char c)
 {
@@ -50,7 +62,7 @@ char			**ft_strsplit(const char *str, char c)
 	j = 0;
 	wrd = ft_count_words(str, c);
 	if (!(s = (char **)malloc(sizeof(s) * (ft_count_words(str, c) + 2))))
-		return (NULL);
+		ft_error("Malloc error");
 	while (str[i] == c && str[i])
 		i++;
 	while (j < wrd && str[i])

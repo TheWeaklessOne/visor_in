@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Utils.h"
+#include "../Includes/util.h"
 
 int				list_length(t_list *lst)
 {

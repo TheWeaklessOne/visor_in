@@ -1,4 +1,16 @@
-#include "../Includes/Utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/19 17:26:20 by wstygg            #+#    #+#             */
+/*   Updated: 2020/01/19 17:26:21 by wstygg           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../Includes/util.h"
 
 void			ft_free(char **to_free)
 {
@@ -76,7 +88,7 @@ int				get_nl(int const fd, char **line)
 	if (fd < 0 || fd > 12288 || line == NULL || (read(fd, NULL, 0) < 0))
 		return (-1);
 	while ((str[fd] ? (!ft_strchr(str[fd], '\n')) : (1)) &&
-		   (bytes = read(fd, buff, BUFF_SIZE)))
+			(bytes = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[bytes] = '\0';
 		if (!str[fd])

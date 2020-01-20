@@ -1,4 +1,16 @@
-#include "../Includes/Utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_1.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/19 17:25:58 by wstygg            #+#    #+#             */
+/*   Updated: 2020/01/19 17:25:59 by wstygg           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../Includes/util.h"
 
 int						ft_atoi(const char *str)
 {
@@ -7,9 +19,8 @@ int						ft_atoi(const char *str)
 	int					sign;
 
 	result = 0;
-	sign = 0;
 	i = 0;
-	while (str[i] >= 9 && str[i] <= 13)
+	while (!(sign = 0) && str[i] >= 9 && str[i] <= 13)
 		i++;
 	if (str[i] < '0' || str[i] > '9')
 	{

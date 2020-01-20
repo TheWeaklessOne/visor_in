@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Utils.h"
+#include "../Includes/util.h"
 
 t_list			*list_remove_front(t_list *list, int to_free)
 {

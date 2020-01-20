@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graph.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/19 17:25:11 by wstygg            #+#    #+#             */
+/*   Updated: 2020/01/19 17:25:13 by wstygg           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Includes/visor_in.h"
 
 void			init_graph(t_graph *graph)
@@ -5,6 +17,7 @@ void			init_graph(t_graph *graph)
 	graph->lem_count = 0;
 	graph->node = NULL;
 	graph->strokes = NULL;
+	graph->movement = NULL;
 	graph->str = NULL;
 	read_all(graph);
 	fill_node(graph);
@@ -15,7 +28,6 @@ t_node			*create_node(char *str)
 {
 	char		**split;
 	t_node		*node;
-	static int	z;
 
 	if (!str)
 		ft_error("Input error");
@@ -26,7 +38,7 @@ t_node			*create_node(char *str)
 	if (!(node = malloc(sizeof(t_node))))
 		ft_error("Malloc error");
 	node->name = split[0];
-	node->point = (SDL_Point){ft_atoi(split[1]), ft_atoi(split[2])};
+	node->point = (SDL_Point){ft_atoi(split[1]) + 1, ft_atoi(split[2]) + 1};
 	free(split[1]);
 	free(split[2]);
 	free(split);
@@ -55,7 +67,7 @@ int				check_type(char *str)
 	return (0);
 }
 
-SDL_Point		find_by_name(char *name, t_graph *graph)
+SDL_Point		*find_by_name(char *name, t_graph *graph)
 {
 	t_list		*tmp;
 
@@ -63,17 +75,17 @@ SDL_Point		find_by_name(char *name, t_graph *graph)
 	while (tmp)
 	{
 		if (!ft_strcmp(((t_node*)tmp->content)->name, name))
-			return (((t_node*)tmp->content)->point);
+			return (&((t_node*)tmp->content)->point);
 		tmp = tmp->next;
 	}
-	return ((SDL_Point){-228});
+	return (NULL);
 }
 
 t_stroke		*create_stroke(char *a, char *b, t_graph *graph)
 {
 	t_stroke	*ret;
 
-	if (!a || !b || find_by_name(a, graph).x == -228 || find_by_name(b, graph).x == -228)
+	if (!a || !b || !find_by_name(a, graph) || !find_by_name(b, graph))
 		ft_error("Room name error");
 	if (!(ret = malloc(sizeof(t_stroke))))
 		ft_error("Malloc error");
