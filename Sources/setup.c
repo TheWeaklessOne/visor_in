@@ -12,6 +12,16 @@
 
 #include "../Includes/visor_in.h"
 
+t_list			*free_and_next(t_list *list)
+{
+	t_list		*ret;
+
+	ret = list->next;
+	free(list->content);
+	free(list);
+	return (ret);
+}
+
 void			create_ants(t_graph *graph)
 {
 	int			i;
@@ -44,6 +54,8 @@ void			sdl_init(t_sdl *sdl)
 		return (ft_error(SDL_GetError()));
 	if (TTF_Init() == -1)
 		return (ft_error(SDL_GetError()));
+	if (!(sdl->font = TTF_OpenFont("Components/OpenSans-Bold.ttf", 50)))
+		ft_error(SDL_GetError());
 	sdl->message = NULL;
 	sdl->mouse = (t_mouse){(SDL_Point){0, 0}, (SDL_Point){0, 0}, 0};
 	sdl->view.zoom = 1.0f;

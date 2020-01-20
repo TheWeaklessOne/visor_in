@@ -18,7 +18,7 @@ SRC  =	Sources/graph.c			\
 
 OBJ  = $(SRC:.c=.o)
 
-FLAGS = -I /Library/Frameworks/SDL2.framework/Headers -I ~/Library/Frameworks/SDL2_ttf.framework/Headers -I ~/Library/Frameworks/SDL2_image.framework/Headers -F ~/Library/Frameworks
+FLAGS = -I ~/Library/Frameworks/SDL2.framework/Headers -I ~/Library/Frameworks/SDL2_ttf.framework/Headers -I ~/Library/Frameworks/SDL2_image.framework/Headers -F ~/Library/Frameworks
 
 RED= \033[1;31m
 GREEN= \033[1;32m

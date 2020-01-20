@@ -14,6 +14,8 @@
 
 void			init_graph(t_graph *graph)
 {
+	t_list		*lst;
+
 	graph->lem_count = 0;
 	graph->node = NULL;
 	graph->strokes = NULL;
@@ -22,6 +24,13 @@ void			init_graph(t_graph *graph)
 	read_all(graph);
 	fill_node(graph);
 	check_all(graph);
+	while (graph->str_head)
+	{
+		lst = graph->str_head;
+		graph->str_head = graph->str_head->next;
+		free(lst->content);
+		free(lst);
+	}
 }
 
 t_node			*create_node(char *str)

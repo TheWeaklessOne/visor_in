@@ -76,9 +76,7 @@ void			put_text(int x, int y, const char *text, t_sdl *sdl)
 
 	if (sdl->message)
 		SDL_DestroyTexture(sdl->message);
-	if (!(font = TTF_OpenFont("Components/OpenSans-Bold.ttf", 50)))
-		ft_error(SDL_GetError());
-	if (!(surf = TTF_RenderText_Solid(font, text, (SDL_Color){0xFF, 0x0, 0x0})))
+	if (!(surf = TTF_RenderText_Solid(sdl->font, text, (SDL_Color){0xFF, 0x0, 0x0})))
 		ft_error(SDL_GetError());
 	if (!(sdl->message = SDL_CreateTextureFromSurface(sdl->ren, surf)))
 		ft_error(SDL_GetError());

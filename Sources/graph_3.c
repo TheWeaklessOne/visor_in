@@ -12,6 +12,15 @@
 
 #include "../Includes/visor_in.h"
 
+void			ft_free_split(char **split)
+{
+	int			i;
+
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
+}
 t_move			*create_move(char *str)
 {
 	char		**split;
@@ -51,5 +60,6 @@ void			fill_movement(t_graph *g)
 			g->movement = list_add_back(g->movement, create_move(split[i]));
 		g->movement = list_add_back(g->movement, create_move(split[i]));
 		g->str = g->str->next;
+		ft_free_split(split);
 	}
 }

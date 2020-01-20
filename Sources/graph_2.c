@@ -53,6 +53,9 @@ void			fill_stroke(t_node *sae[2], t_graph *graph)
 		graph->strokes = list_add_back(graph->strokes,
 				create_stroke(s[0], s[1], graph));
 		graph->str = graph->str->next;
+		free(s[0]);
+		free(s[1]);
+		free(s);
 	}
 	fill_movement(graph);
 }
@@ -105,4 +108,5 @@ void			read_all(t_graph *graph)
 	str = NULL;
 	while (gnl(0, &str))
 		graph->str = list_add_back(graph->str, str);
+	graph->str_head = graph->str;
 }

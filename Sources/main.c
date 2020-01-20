@@ -15,19 +15,29 @@
 void			move_ants(t_graph *graph)
 {
 	t_move		*move;
+	t_move		*to_free;
+	t_list		*lst;
 
 	while (graph->movement)
 	{
 		move = graph->movement->content;
 		if (move->nb == -1)
 		{
+			lst = graph->movement;
 			graph->movement = graph->movement->next;
+			free(lst->content);
+			free(lst);
 			break ;
 		}
 		if (!(graph->ants[move->nb].end_pos = find_by_name(move->node, graph)))
 			ft_error("Node name error");
 		graph->ants[move->nb].moving = 1;
+		lst = graph->movement;
 		graph->movement = graph->movement->next;
+		to_free = lst->content;
+		free(to_free->node);
+		free(lst->content);
+		free(lst);
 	}
 }
 

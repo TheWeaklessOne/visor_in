@@ -18,7 +18,7 @@
 
 # define ANIM_S 2500
 
-# include "SDL2/SDL.h"
+# include "SDL.h"
 # include "SDL_image.h"
 # include "SDL_ttf.h"
 
@@ -52,6 +52,7 @@ typedef struct		s_sdl
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	SDL_Texture		*message;
+	TTF_Font		*font;
 	t_texture		ant;
 	t_texture		house;
 	t_view			view;
@@ -92,6 +93,7 @@ typedef struct		s_move
 typedef struct		s_graph
 {
 	int				lem_count;
+	t_list			*str_head;
 	t_list			*movement;
 	t_list			*strokes;
 	t_list			*node;
@@ -130,6 +132,7 @@ void				fill_movement(t_graph *g);
 void				read_all(t_graph *graph);
 
 int					gnl(int fd, char **str);
+t_list				*free_and_next(t_list *list);
 double				calc_angle(SDL_Point p1, SDL_Point p2);
 SDL_Point			*find_by_name(char *name, t_graph *graph);
 
