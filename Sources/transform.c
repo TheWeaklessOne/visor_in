@@ -12,6 +12,33 @@
 
 #include "../Includes/visor_in.h"
 
+void		draw_line(SDL_Point p1, SDL_Point p2, t_sdl *sdl)
+{
+	t_line	line;
+
+	line = (t_line){
+			.dx = SDL_abs(p2.x - p1.x), .dy = SDL_abs(p2.y - p1.y),
+			.sx = p1.x < p2.x ? 1 : -1, .sy = p1.y < p2.y ? 1 : -1
+	};
+	line.error = line.dx - line.dy;
+	SDL_RenderDrawPoint(sdl->ren, p2.x, p2.y);
+	while (p1.x != p2.x || p1.y != p2.y)
+	{
+		SDL_RenderDrawPoint(sdl->ren, p1.x, p1.y);
+		line.error_2 = line.error * 2;
+		if (line.error_2 > -line.dy)
+		{
+			line.error -= line.dy;
+			p1.x += line.sx;
+		}
+		if (line.error_2 < line.dx)
+		{
+			line.error += line.dx;
+			p1.y += line.sy;
+		}
+	}
+}
+
 void		find_min_max(t_graph *graph, t_sdl *sdl)
 {
 	t_list	*tmp;

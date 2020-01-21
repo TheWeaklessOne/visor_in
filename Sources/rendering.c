@@ -6,7 +6,7 @@
 /*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:25:28 by wstygg            #+#    #+#             */
-/*   Updated: 2020/01/19 17:25:30 by wstygg           ###   ########.fr       */
+/*   Updated: 2020/01/21 15:48:13 by wstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			draw_strokes(t_graph *graph, t_sdl *sdl)
 	while (lst)
 	{
 		stroke = lst->content;
+		draw_line(*stroke->p1, *stroke->p2, sdl);
 		SDL_RenderDrawLine(sdl->ren, stroke->p1->x,
 				stroke->p1->y, stroke->p2->x, stroke->p2->y);
 		lst = lst->next;
@@ -71,12 +72,12 @@ void			draw_strokes(t_graph *graph, t_sdl *sdl)
 void			put_text(int x, int y, const char *text, t_sdl *sdl)
 {
 	SDL_Surface	*surf;
-	TTF_Font	*font;
 	SDL_Rect	rect;
 
 	if (sdl->message)
 		SDL_DestroyTexture(sdl->message);
-	if (!(surf = TTF_RenderText_Solid(sdl->font, text, (SDL_Color){0xFF, 0x0, 0x0})))
+	if (!(surf = TTF_RenderText_Solid(sdl->font, text,
+			(SDL_Color){0xFF, 0x0, 0x0})))
 		ft_error(SDL_GetError());
 	if (!(sdl->message = SDL_CreateTextureFromSurface(sdl->ren, surf)))
 		ft_error(SDL_GetError());

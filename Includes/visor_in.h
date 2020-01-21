@@ -24,6 +24,16 @@
 
 # include "util.h"
 
+typedef struct		s_line
+{
+	int				dx;
+	int				dy;
+	int				sx;
+	int				sy;
+	int				error;
+	int				error_2;
+}					t_line;
+
 typedef struct		s_texture
 {
 	int				width;
@@ -120,6 +130,7 @@ void				texture_render_ex(SDL_Point p, double a,
 						t_texture *t, t_sdl *s);
 void				texture_render(SDL_Point p, t_texture *texture, t_sdl *sdl);
 void				texture_load(char *path, t_texture *texture, t_sdl *sdl);
+void				draw_line(SDL_Point p1, SDL_Point p2, t_sdl *sdl);
 
 void				init_graph(t_graph *graph);
 t_node				*create_node(char *str);

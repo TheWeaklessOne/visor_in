@@ -6,7 +6,7 @@
 /*   By: wstygg <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 17:56:11 by wstygg            #+#    #+#             */
-/*   Updated: 2020/01/20 17:56:12 by wstygg           ###   ########.fr       */
+/*   Updated: 2020/01/21 15:48:38 by wstygg           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void			ft_free_split(char **split)
 		free(split[i]);
 	free(split);
 }
+
 t_move			*create_move(char *str)
 {
 	char		**split;

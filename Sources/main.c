@@ -53,6 +53,16 @@ void			event_handler_2(SDL_Event e, t_graph *graph, t_sdl *sdl)
 			sdl->start_time = sdl->curr_time;
 			sdl->moving = 1;
 		}
+		if (e.key.keysym.sym == SDLK_KP_PLUS)
+		{
+			SDL_SetWindowSize(sdl->win, 2560, 1440);
+			SDL_SetWindowFullscreen(sdl->win, SDL_WINDOW_FULLSCREEN);
+		}
+		if (e.key.keysym.sym == SDLK_KP_MINUS)
+		{
+			SDL_SetWindowSize(sdl->win, SCREEN_WIDTH, SCREEN_HEIGHT);
+			SDL_SetWindowFullscreen(sdl->win, 0);
+		}
 	}
 	else if (e.type == SDL_QUIT)
 		sdl->running = 0;
