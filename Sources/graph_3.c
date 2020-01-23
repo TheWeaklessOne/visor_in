@@ -51,6 +51,8 @@ void			fill_movement(t_graph *g)
 	char		**split;
 	int			i;
 
+	if (!g->str)
+		ft_error("Input error");
 	g->str = g->str->next;
 	while (g->str)
 	{
