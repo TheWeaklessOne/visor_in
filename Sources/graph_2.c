@@ -107,7 +107,14 @@ void			read_all(t_graph *graph)
 
 	str = NULL;
 	while (gnl(0, &str))
+	{
 		if (check_type(str) != -1)
 			graph->str = list_add_back(graph->str, str);
+		else
+		{
+			free(str);
+			str = NULL;
+		}
+	}
 	graph->str_head = graph->str;
 }
