@@ -1,0 +1,46 @@
+20
+a 0 0
+##start
+b 0 4
+c 2 2
+d 4 0
+e 3 4
+f 6 2
+g 6 4
+h 5 7
+i 9 0
+j 9 4
+k 9 6
+l 7 8
+##end
+m 12 4
+n 12 8
+a-b
+b-e
+e-g
+g-j
+j-m
+a-d
+d-i
+i-j
+b-c
+c-f
+f-g
+e-h
+h-l
+l-n
+n-m
+g-k
+k-m
+
+L1-a L2-e L3-c 
+L1-d L2-h L3-f L4-a L5-e L6-c 
+L1-i L2-l L3-g L4-d L5-h L6-f L7-a L8-e L9-c 
+L1-j L2-n L3-k L4-i L5-l L6-g L7-d L8-h L9-f L10-a L11-e L12-c 
+L1-m L2-m L3-m L4-j L5-n L6-k L7-i L8-l L9-g L10-d L11-h L12-f L13-a L14-e L15-c 
+L4-m L5-m L6-m L7-j L8-n L9-k L10-i L11-l L12-g L13-d L14-h L15-f L16-a L17-e L18-c 
+L7-m L8-m L9-m L10-j L11-n L12-k L13-i L14-l L15-g L16-d L17-h L18-f L19-a L20-e 
+L10-m L11-m L12-m L13-j L14-n L15-k L16-i L17-l L18-g L19-d L20-h 
+L13-m L14-m L15-m L16-j L17-n L18-k L19-i L20-l 
+L16-m L17-m L18-m L19-j L20-n 
+L19-m L20-m 
